@@ -18,9 +18,9 @@ namespace EveESIClient
 
         private static ClientFactory _clientFactory => new ClientFactory();
 
-        public static void Configure(Action<ClientConfiguration> config)
+        public static void Configure(Func<ClientConfiguration> config)
         {
-             config(ClientConfiguration);
+            ClientConfiguration = config();
         }
     }
 }
