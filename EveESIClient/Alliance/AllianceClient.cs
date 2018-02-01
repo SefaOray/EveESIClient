@@ -3,11 +3,13 @@ using EveESIClient.Models.Alliance;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using EveESIClient.Helpers;
 
 namespace EveESIClient.Alliance
 {
+    /// <summary>
+    /// Requests to /alliances endpoints
+    /// </summary>
     public class AllianceClient
     {
         private readonly IHttpClient _client;
@@ -22,7 +24,7 @@ namespace EveESIClient.Alliance
         /// <returns>List of Alliance IDs</returns>
         public ESIResponse<List<Int64>> Alliances()
         {
-            var request = RestRequestHelper.CreateRestRequest("/alliances/",Method.GET);
+            var request = RestRequestHelper.CreateRestRequest("alliances/",Method.GET);
             var response = _client.Execute<List<Int64>>(request);
             return response;
         }
@@ -34,8 +36,7 @@ namespace EveESIClient.Alliance
         /// <returns>Public data about an alliance</returns>
         public ESIResponse<GetAllianceResponse> GetAlliance(Int64 allianceId)
         {
-            var request = RestRequestHelper.CreateRestRequest("/alliances/{alliance_id}", Method.GET);
-            request.AddParameter("alliance_id", allianceId);
+            var request = RestRequestHelper.CreateRestRequest($"alliances/{allianceId}", Method.GET);
 
             var response = _client.Execute<GetAllianceResponse>(request);
             return response;
@@ -48,8 +49,7 @@ namespace EveESIClient.Alliance
         /// <returns>List of corporation IDs</returns>
         public ESIResponse<List<Int64>> GetAllianceCorporations(Int64 allianceId)
         {
-            var request = RestRequestHelper.CreateRestRequest("/alliances/{alliance_id}/corporations/", Method.GET);
-            request.AddParameter("alliance_id", allianceId);
+            var request = RestRequestHelper.CreateRestRequest($"alliances/{allianceId}/corporations/", Method.GET);
 
             var response = _client.Execute<List<Int64>>(request);
             return response;
@@ -62,8 +62,7 @@ namespace EveESIClient.Alliance
         /// <returns>Icon URLs for the given alliance id and server</returns>
         public ESIResponse<GetAllianceIconsResponse> GetAllianceIcons(Int64 allianceId)
         {
-            var request = RestRequestHelper.CreateRestRequest("/alliances/{alliance_id}/icons/", Method.GET);
-            request.AddParameter("alliance_id", allianceId);
+            var request = RestRequestHelper.CreateRestRequest($"alliances/{allianceId}/icons/", Method.GET);
 
             var response = _client.Execute<GetAllianceIconsResponse>(request);
             return response;
@@ -76,7 +75,7 @@ namespace EveESIClient.Alliance
         /// <returns>List of id/name associations</returns>
         public ESIResponse<GetAllianceNamesResponse> GetAllianceNames(Int64[] allianceIds)
         {
-            var request = RestRequestHelper.CreateRestRequest("/alliances/names/", Method.GET);
+            var request = RestRequestHelper.CreateRestRequest("alliances/names/", Method.GET);
             request.AddParameter("alliance_ids", string.Join(",",allianceIds));
 
             var response = _client.Execute<GetAllianceNamesResponse>(request);
