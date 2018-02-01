@@ -12,12 +12,12 @@ namespace EveESIClient.Models.Configuration
         /// Singularity: Test server.
         /// Tranquility is default.
         /// </summary>
-        public ClientTarget DataSource => ClientTarget.Tranquility;
+        public ClientTarget DataSource { get; set; } = ClientTarget.Tranquility;
 
         /// <summary>
         /// Custom X-User-Agent parameter.
         /// </summary>
-        public string XUserAgent => "EveESIClient";
+        public string XUserAgent { get; set; } = "EveESIClient";
 
         /// <summary>
         /// Default is 'https://esi.tech.ccp.is'
@@ -26,6 +26,6 @@ namespace EveESIClient.Models.Configuration
         /// https://esi.tech.ccp.is/legacy/
         /// https://esi.tech.ccp.is/v1/
         /// </summary>
-        public Uri ApiUri => new Uri("https://esi.tech.ccp.is");
+        public Uri ApiUri { get; set;  } = new Uri("https://esi.tech.ccp.is/latest/");
     }
 }
