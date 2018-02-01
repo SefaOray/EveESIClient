@@ -2,7 +2,6 @@
 using EveESIClient.Client;
 using EveESIClient.Models.Configuration;
 using System;
-using System.Reflection.Metadata.Ecma335;
 
 namespace EveESIClient
 {
