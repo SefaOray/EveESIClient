@@ -2,18 +2,17 @@
 using EveESIClient.Client;
 using EveESIClient.Models.Configuration;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EveESIClient
 {
     public class ESIClient
     {
+        private static ClientConfiguration _clientConfiguration;
         public static ClientConfiguration ClientConfiguration
         {
-            get => ClientConfiguration ?? throw new InvalidOperationException("Client is not initialized.");
-            set
-            {
-                ClientConfiguration = ClientConfiguration == null ? value : throw new InvalidOperationException("Client already initialized.");
-            }
+            get => _clientConfiguration;
+            private set => _clientConfiguration = value;
         }
         public AllianceClient Alliance => new AllianceClient(_clientFactory.GetClient());
 
