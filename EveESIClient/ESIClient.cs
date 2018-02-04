@@ -1,6 +1,7 @@
 ﻿using EveESIClient.Alliance;
 using EveESIClient.Assets;
 using EveESIClient.Bookmarks;
+using EveESIClient.Calendar;
 using EveESIClient.Client;
 using EveESIClient.Models.Configuration;
 using System;
@@ -23,6 +24,7 @@ namespace EveESIClient
         public AllianceClient Alliance => new AllianceClient(_clientFactory.GetClient());
         public AssetsClient Assets => new AssetsClient(_clientFactory.GetClient());
         public BookmarksClient Bookmarks => new BookmarksClient(_clientFactory.GetClient());
+        public CalendarClient Calendar => new CalendarClient(_clientFactory.GetClient());
         #endregion
 
         public static void Configure(Func<ClientConfiguration> config)
