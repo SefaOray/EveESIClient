@@ -4,6 +4,8 @@ using EveESIClient.Bookmarks;
 using EveESIClient.Calendar;
 using EveESIClient.Character;
 using EveESIClient.Client;
+using EveESIClient.Clones;
+using EveESIClient.Contacts;
 using EveESIClient.Models.Configuration;
 using System;
 
@@ -27,6 +29,8 @@ namespace EveESIClient
         public BookmarksClient Bookmarks => new BookmarksClient(_clientFactory.GetClient());
         public CalendarClient Calendar => new CalendarClient(_clientFactory.GetClient());
         public CharacterClient Character => new CharacterClient(_clientFactory.GetClient());
+        public ClonesClient Implants => new ClonesClient(_clientFactory.GetClient());
+        public ContactsClient Contacts => new ContactsClient(_clientFactory.GetClient());
         #endregion
 
         public static void Configure(Func<ClientConfiguration> config)
