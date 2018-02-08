@@ -6,6 +6,7 @@ using EveESIClient.Character;
 using EveESIClient.Client;
 using EveESIClient.Clones;
 using EveESIClient.Contacts;
+using EveESIClient.Contracts;
 using EveESIClient.Models.Configuration;
 using System;
 
@@ -31,6 +32,7 @@ namespace EveESIClient
         public CharacterClient Character => new CharacterClient(_clientFactory.GetClient());
         public ClonesClient Implants => new ClonesClient(_clientFactory.GetClient());
         public ContactsClient Contacts => new ContactsClient(_clientFactory.GetClient());
+        public ContractsClient Contracts => new ContractsClient(_clientFactory.GetClient());
         #endregion
 
         public static void Configure(Func<ClientConfiguration> config)
