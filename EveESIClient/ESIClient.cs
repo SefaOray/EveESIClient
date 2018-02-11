@@ -12,6 +12,7 @@ using System;
 using EveESIClient.Corporation;
 using EveESIClient.Dogma;
 using EveESIClient.FactionWarfare;
+using EveESIClient.Fittings;
 
 namespace EveESIClient
 {
@@ -39,6 +40,7 @@ namespace EveESIClient
         public CorporationClient Corporation => new CorporationClient(_clientFactory.GetClient());
         public DogmaClient Dogma => new DogmaClient(_clientFactory.GetClient());
         public FactionWarfareClient FactionWarfare => new FactionWarfareClient(_clientFactory.GetClient());
+        public FittingsClient Fittings => new FittingsClient(_clientFactory.GetClient());
         #endregion
 
         public static void Configure(Func<ClientConfiguration> config)
