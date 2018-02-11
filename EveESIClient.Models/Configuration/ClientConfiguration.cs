@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 
 namespace EveESIClient.Models.Configuration
 {
@@ -20,7 +18,7 @@ namespace EveESIClient.Models.Configuration
         public string XUserAgent { get; set; } = "EveESIClient";
 
         /// <summary>
-        /// Default is 'https://esi.tech.ccp.is'
+        /// Default is 'https://esi.tech.ccp.is/latest/'
         /// Set this property if you want to target custom route eg:
         /// https://esi.tech.ccp.is/dev/
         /// https://esi.tech.ccp.is/legacy/

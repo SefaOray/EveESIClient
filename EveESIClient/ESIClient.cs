@@ -10,6 +10,7 @@ using EveESIClient.Contracts;
 using EveESIClient.Models.Configuration;
 using System;
 using EveESIClient.Corporation;
+using EveESIClient.Dogma;
 
 namespace EveESIClient
 {
@@ -35,6 +36,7 @@ namespace EveESIClient
         public ContactsClient Contacts => new ContactsClient(_clientFactory.GetClient());
         public ContractsClient Contracts => new ContractsClient(_clientFactory.GetClient());
         public CorporationClient Corporation => new CorporationClient(_clientFactory.GetClient());
+        public DogmaClient Dogma => new DogmaClient(_clientFactory.GetClient());
         #endregion
 
         public static void Configure(Func<ClientConfiguration> config)
