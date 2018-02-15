@@ -24,6 +24,6 @@ namespace EveESIClient.Models.Configuration
         /// https://esi.tech.ccp.is/legacy/
         /// https://esi.tech.ccp.is/v1/
         /// </summary>
-        public Uri ApiUri { get; set;  } = new Uri("https://esi.tech.ccp.is/latest/");
+        public Uri ApiUri { get; set; } = new Uri("https://esi.tech.ccp.is/latest/");
     }
 }

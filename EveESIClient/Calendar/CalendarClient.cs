@@ -10,14 +10,15 @@ namespace EveESIClient.Calendar
     public class CalendarClient
     {
         private readonly IHttpClient _client;
+
         internal CalendarClient(IHttpClient httpClient)
         {
             _client = httpClient;
         }
 
         /// <summary>
-        /// Get 50 event summaries from the calendar. If no from_event ID is given, 
-        /// the resource will return the next 50 chronological event summaries from now. 
+        /// Get 50 event summaries from the calendar. If no from_event ID is given,
+        /// the resource will return the next 50 chronological event summaries from now.
         /// If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event.
         /// </summary>
         /// <param name="authToken">Access token to use</param>
@@ -26,7 +27,7 @@ namespace EveESIClient.Calendar
         /// <returns>A collection of event summaries</returns>
         public ESIResponse<List<GetCharacterCalendarResponse>> GetCharacterCalendar(string authToken, Int64 characterId, Int64? fromEvent)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/calendar/", Method.GET,
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/calendar/",
                     authToken);
 
             request.AddParameter("fromEvent", fromEvent, ParameterType.QueryString);
@@ -43,7 +44,7 @@ namespace EveESIClient.Calendar
         /// <returns>Full details of a specific event</returns>
         public ESIResponse<GetEventResponse> GetEvent(string authToken, Int64 characterId, Int64 eventId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/calendar/{eventId}/", Method.GET,
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/calendar/{eventId}/",
                     authToken);
 
             return _client.Execute<GetEventResponse>(request);
@@ -59,8 +60,7 @@ namespace EveESIClient.Calendar
         /// <returns>IsSuccessful will be true on successfull call.</returns>
         public ESIResponse<object> RespondEvent(string authToken, Int64 characterId, Int64 eventId, string response)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/calendar/{eventId}/", Method.PUT,
-                    authToken);
+            var request = RestRequestHelper.CreateAuthorizedPutRequest($"characters/{characterId}/calendar/{eventId}/", authToken);
 
             return _client.Execute<object>(request);
         }
@@ -74,7 +74,7 @@ namespace EveESIClient.Calendar
         /// <returns>List of attendees</returns>
         public ESIResponse<List<GetEventAttendeesResponse>> GetEventAttendees(string authToken, Int64 characterId, Int64 eventId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/calendar/{eventId}/attendees/", Method.GET,
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/calendar/{eventId}/attendees/",
                     authToken);
 
             return _client.Execute<List<GetEventAttendeesResponse>>(request);

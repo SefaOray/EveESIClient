@@ -1,7 +1,6 @@
 ﻿using EveESIClient.Client;
 using EveESIClient.Helpers;
 using EveESIClient.Models.Character;
-using RestSharp;
 using System;
 using System.Collections.Generic;
 
@@ -10,6 +9,7 @@ namespace EveESIClient.Character
     public class CharacterClient
     {
         private readonly IHttpClient _client;
+
         internal CharacterClient(IHttpClient httpClient)
         {
             _client = httpClient;
@@ -22,7 +22,7 @@ namespace EveESIClient.Character
         /// <returns>Public data for the given character</returns>
         public ESIResponse<GetCharacterResponse> GetCharacter(Int64 characterId)
         {
-            var request = RestRequestHelper.CreateRestRequest($"characters/{characterId}/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"characters/{characterId}/");
 
             return _client.Execute<GetCharacterResponse>(request);
         }
@@ -37,7 +37,7 @@ namespace EveESIClient.Character
         /// <returns>A list of agents research information</returns>
         public ESIResponse<List<GetAgentResearchResponse>> GetAgentResearch(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/agents_research/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/agents_research/", authToken);
 
             return _client.Execute<List<GetAgentResearchResponse>>(request);
         }
@@ -50,7 +50,7 @@ namespace EveESIClient.Character
         /// <returns>A list of blueprints</returns>
         public ESIResponse<List<GetBlueprintsResponse>> GetBlueprints(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/blueprints/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/blueprints/", authToken);
 
             return _client.Execute<List<GetBlueprintsResponse>>(request);
         }
@@ -63,7 +63,7 @@ namespace EveESIClient.Character
         /// <returns>A list of chat channels</returns>
         public ESIResponse<List<GetChatChannelsResponse>> GetChatChannels(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/chat_channels/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/chat_channels/", authToken);
 
             return _client.Execute<List<GetChatChannelsResponse>>(request);
         }
@@ -75,7 +75,7 @@ namespace EveESIClient.Character
         /// <returns>Corporation history for the given character</returns>
         public ESIResponse<List<GetCorporationHistoryResponse>> GetCorporationHistory(Int64 characterId)
         {
-            var request = RestRequestHelper.CreateRestRequest($"characters/{characterId}/corporationhistory/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"characters/{characterId}/corporationhistory/");
 
             return _client.Execute<List<GetCorporationHistoryResponse>>(request);
         }
@@ -89,7 +89,7 @@ namespace EveESIClient.Character
         /// <returns>Aggregate cost of sending a mail from the source character to the target characters, in ISK</returns>
         public ESIResponse<float> Cspa(string authToken, Int64 characterId, List<Int64> targetCharacters)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/cspa/", Method.POST, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPostRequest($"characters/{characterId}/cspa/", authToken);
 
             request.AddBody(targetCharacters);
 
@@ -104,7 +104,7 @@ namespace EveESIClient.Character
         /// <returns>Jump activation and fatigue information</returns>
         public ESIResponse<GetFatigueResponse> GetFatigue(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/fatigue/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/fatigue/", authToken);
 
             return _client.Execute<GetFatigueResponse>(request);
         }
@@ -117,7 +117,7 @@ namespace EveESIClient.Character
         /// <returns>A list of medals</returns>
         public ESIResponse<List<GetCharacterMedalsResponse>> GetCharacterMedals(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/medals/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/medals/", authToken);
 
             return _client.Execute<List<GetCharacterMedalsResponse>>(request);
         }
@@ -130,7 +130,7 @@ namespace EveESIClient.Character
         /// <returns>Returns your recent notifications</returns>
         public ESIResponse<List<GetCharacterNotificationsResponse>> GetCharacterNotifications(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/notifications/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/notifications/", authToken);
 
             return _client.Execute<List<GetCharacterNotificationsResponse>>(request);
         }
@@ -143,7 +143,7 @@ namespace EveESIClient.Character
         /// <returns>A list of contact notifications</returns>
         public ESIResponse<List<GetContactNotificationsResponse>> GetContactNotifications(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/notifications/contacts/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/notifications/contacts/", authToken);
 
             return _client.Execute<List<GetContactNotificationsResponse>>(request);
         }
@@ -155,7 +155,7 @@ namespace EveESIClient.Character
         /// <returns>Public data for the given character</returns>
         public ESIResponse<GetCharacterPortraitResponse> GetCharacterPortrait(Int64 characterId)
         {
-            var request = RestRequestHelper.CreateRestRequest($"characters/{characterId}/portrait/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"characters/{characterId}/portrait/");
 
             return _client.Execute<GetCharacterPortraitResponse>(request);
         }
@@ -168,7 +168,7 @@ namespace EveESIClient.Character
         /// <returns>The character’s roles in thier corporation</returns>
         public ESIResponse<List<GetCharacterRolesResponse>> GetCharacterRoles(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/roles/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/roles/", authToken);
 
             return _client.Execute<List<GetCharacterRolesResponse>>(request);
         }
@@ -181,7 +181,7 @@ namespace EveESIClient.Character
         /// <returns>A list of standings</returns>
         public ESIResponse<List<GetCharacterStandingsResponse>> GetCharacterStandings(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/standings/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/standings/", authToken);
 
             return _client.Execute<List<GetCharacterStandingsResponse>>(request);
         }
@@ -194,7 +194,7 @@ namespace EveESIClient.Character
         /// <returns>Character stats</returns>
         public ESIResponse<List<GetCharacterStatsResponse>> GetCharacterStats(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/stats/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/stats/", authToken);
 
             return _client.Execute<List<GetCharacterStatsResponse>>(request);
         }
@@ -207,7 +207,7 @@ namespace EveESIClient.Character
         /// <returns>A list of titles</returns>
         public ESIResponse<List<GetCharacterTitlesResponse>> GetCharacterTitles(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/titles/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/titles/", authToken);
 
             return _client.Execute<List<GetCharacterTitlesResponse>>(request);
         }
@@ -219,7 +219,7 @@ namespace EveESIClient.Character
         /// <returns>Character corporation, alliance and faction IDs</returns>
         public ESIResponse<List<GetcharacterAffiliationsResponse>> GetcharacterAffiliations(Int64[] characterIds)
         {
-            var request = RestRequestHelper.CreateRestRequest($"characters/affiliation/", Method.POST );
+            var request = RestRequestHelper.CreatePostRequest($"characters/affiliation/");
             request.AddBody(characterIds);
 
             return _client.Execute<List<GetcharacterAffiliationsResponse>>(request);
@@ -232,8 +232,8 @@ namespace EveESIClient.Character
         /// <returns>List of id/name associations</returns>
         public ESIResponse<List<GetCharacterNamesResponse>> GetCharacterNames(Int64[] characterIds)
         {
-            var request = RestRequestHelper.CreateRestRequest($"characters/names/", Method.GET);
-            request.AddQueryParameter("character_ids",string.Join(",",characterIds));
+            var request = RestRequestHelper.CreateGetRequest($"characters/names/");
+            request.AddQueryParameter("character_ids", string.Join(",", characterIds));
 
             return _client.Execute<List<GetCharacterNamesResponse>>(request);
         }

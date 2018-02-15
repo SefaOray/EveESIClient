@@ -7,28 +7,33 @@ using EveESIClient.Client;
 using EveESIClient.Clones;
 using EveESIClient.Contacts;
 using EveESIClient.Contracts;
-using EveESIClient.Models.Configuration;
-using System;
 using EveESIClient.Corporation;
 using EveESIClient.Dogma;
 using EveESIClient.FactionWarfare;
 using EveESIClient.Fittings;
+using EveESIClient.Models.Configuration;
+using System;
 
 namespace EveESIClient
 {
     public class ESIClient
     {
         #region Configuration
+
         private static ClientConfiguration _clientConfiguration;
+
         public static ClientConfiguration ClientConfiguration
         {
             get => _clientConfiguration;
             private set => _clientConfiguration = value;
         }
+
         private static ClientFactory _clientFactory => new ClientFactory();
-        #endregion
+
+        #endregion Configuration
 
         #region Clients
+
         public AllianceClient Alliance => new AllianceClient(_clientFactory.GetClient());
         public AssetsClient Assets => new AssetsClient(_clientFactory.GetClient());
         public BookmarksClient Bookmarks => new BookmarksClient(_clientFactory.GetClient());
@@ -41,7 +46,8 @@ namespace EveESIClient
         public DogmaClient Dogma => new DogmaClient(_clientFactory.GetClient());
         public FactionWarfareClient FactionWarfare => new FactionWarfareClient(_clientFactory.GetClient());
         public FittingsClient Fittings => new FittingsClient(_clientFactory.GetClient());
-        #endregion
+
+        #endregion Clients
 
         public static void Configure(Func<ClientConfiguration> config)
         {

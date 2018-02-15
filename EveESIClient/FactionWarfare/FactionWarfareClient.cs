@@ -4,13 +4,13 @@ using EveESIClient.Models.FactionWarfare;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.FactionWarfare
 {
     public class FactionWarfareClient
     {
         private readonly IHttpClient _client;
+
         internal FactionWarfareClient(IHttpClient client)
         {
             _client = client;
@@ -24,7 +24,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>Faction warfare statistics for a given character</returns>
         public ESIResponse<GetCharacterFactionWarfareStatsResponse> GetCharacterFactionWarfareStats(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/fw/stats/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/fw/stats/", authToken);
 
             return _client.Execute<GetCharacterFactionWarfareStatsResponse>(request);
         }
@@ -37,7 +37,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>Faction warfare statistics for a given corporation</returns>
         public ESIResponse<GetCorporationFactionWarfareStatsResponse> GetCorporationFactionWarfareStats(string authToken, Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/fw/stats/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/fw/stats/", authToken);
 
             return _client.Execute<GetCorporationFactionWarfareStatsResponse>(request);
         }
@@ -48,7 +48,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>Corporation leaderboard of kills and victory points within faction warfare</returns>
         public ESIResponse<GetLeaderboardsResponse> GetLeaderboards()
         {
-            var request = RestRequestHelper.CreateRestRequest($"fw/leaderboards/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"fw/leaderboards/", Method.GET);
 
             return _client.Execute<GetLeaderboardsResponse>(request);
         }
@@ -59,7 +59,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>Character leaderboard of kills and victory points within faction warfare.</returns>
         public ESIResponse<GetCharacterLeaderboardsResponse> GetCharacterLeaderboards()
         {
-            var request = RestRequestHelper.CreateRestRequest($"fw/leaderboards/characters/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"fw/leaderboards/characters/", Method.GET);
 
             return _client.Execute<GetCharacterLeaderboardsResponse>(request);
         }
@@ -70,7 +70,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>Corporation leaderboard of kills and victory points within faction warfare.</returns>
         public ESIResponse<GetCorporationLeaderboardsResponse> GetCorporationLeaderboards()
         {
-            var request = RestRequestHelper.CreateRestRequest($"fw/leaderboards/corporations/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"fw/leaderboards/corporations/", Method.GET);
 
             return _client.Execute<GetCorporationLeaderboardsResponse>(request);
         }
@@ -81,7 +81,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>Per faction breakdown of faction warfare statistics</returns>
         public ESIResponse<GetFactionWarfareStatsResponse> GetFactionWarfareStats()
         {
-            var request = RestRequestHelper.CreateRestRequest($"fw/stats/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"fw/stats/", Method.GET);
 
             return _client.Execute<GetFactionWarfareStatsResponse>(request);
         }
@@ -92,7 +92,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>All faction war solar systems</returns>
         public ESIResponse<List<GetFactionWarfareSystemOwnershipsResponse>> GetFactionWarfareSystemOwnerships()
         {
-            var request = RestRequestHelper.CreateRestRequest($"fw/systems/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"fw/systems/", Method.GET);
 
             return _client.Execute<List<GetFactionWarfareSystemOwnershipsResponse>>(request);
         }
@@ -103,7 +103,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>A list of NPC factions at war</returns>
         public ESIResponse<List<GetFactionWarfareWarsResponse>> GetFactionWarfareWars()
         {
-            var request = RestRequestHelper.CreateRestRequest($"fw/wars/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"fw/wars/", Method.GET);
 
             return _client.Execute<List<GetFactionWarfareWarsResponse>>(request);
         }

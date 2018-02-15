@@ -1,10 +1,9 @@
 ﻿using RestSharp;
-using System;
 
 namespace EveESIClient.Client
 {
-   internal class HttpClient : IHttpClient
-   {
+    internal class HttpClient : IHttpClient
+    {
         public ESIResponse<T> Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient(ESIClient.ClientConfiguration.ApiUri);

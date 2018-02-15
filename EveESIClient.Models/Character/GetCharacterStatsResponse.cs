@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Character
 {
@@ -27,6 +25,7 @@ namespace EveESIClient.Models.Character
             public Int64? Minutes { get; set; }
             public Int64? Sessions_started { get; set; }
         }
+
         public class CharacterStatsCombat
         {
             public Int64? Cap_drainedby_npc { get; set; }
@@ -163,7 +162,6 @@ namespace EveESIClient.Models.Character
             public Int64? Jobs_started_time_productivity { get; set; }
             public Int64? Reprocess_item { get; set; }
             public Int64? Reprocess_item_quantity { get; set; }
-
         }
 
         public class CharacterStatsInventory
@@ -296,7 +294,6 @@ namespace EveESIClient.Models.Character
             public Int64? Strike_characters_killed { get; set; }
             public Int64? Strike_damage_to_players_armor_amount { get; set; }
             public Int64? Strike_damage_to_players_shield_amount { get; set; }
-
         }
 
         public class CharacterStatsPve

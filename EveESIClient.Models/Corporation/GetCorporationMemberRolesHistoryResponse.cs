@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Corporation
 {
@@ -12,6 +11,5 @@ namespace EveESIClient.Models.Corporation
         public string Role_type { get; set; }
         public List<string> Old_roles { get; set; }
         public List<string> New_roles { get; set; }
-
     }
 }

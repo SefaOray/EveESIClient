@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Corporation
 {
@@ -14,6 +12,7 @@ namespace EveESIClient.Models.Corporation
         /// [ private, public ]
         /// </summary>
         public string Status { get; set; }
+
         public Int64 Issuer_id { get; set; }
         public DateTime Issued_at { get; set; }
     }

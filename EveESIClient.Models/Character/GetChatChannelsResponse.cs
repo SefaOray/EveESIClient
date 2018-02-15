@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Character
 {
@@ -16,7 +15,7 @@ namespace EveESIClient.Models.Character
         public List<ChatChannelsOperators> operators { get; set; }
         public List<ChatChannelsBlocked> blocked { get; set; }
         public List<ChatChannelsMuted> muted { get; set; }
-        
+
         public class ChatChannelsAllowed
         {
             public Int64 Accessor_id { get; set; }

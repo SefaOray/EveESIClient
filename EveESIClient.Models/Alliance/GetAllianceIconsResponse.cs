@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EveESIClient.Models.Alliance
+﻿namespace EveESIClient.Models.Alliance
 {
     public class GetAllianceIconsResponse
     {

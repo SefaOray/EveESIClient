@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Contracts
 {
@@ -14,6 +12,7 @@ namespace EveESIClient.Models.Contracts
         /// -1 indicates that the item is a singleton (non-stackable). If the item happens to be a Blueprint, -1 is an Original and -2 is a Blueprint Copy
         /// </summary>
         public Int32? Raw_quantity { get; set; }
+
         public bool Is_singleton { get; set; }
 
         /// <summary>

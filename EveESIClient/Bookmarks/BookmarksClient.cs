@@ -25,7 +25,7 @@ namespace EveESIClient.Bookmarks
         /// <returns>A list of bookmarks</returns>
         public ESIResponse<List<GetPersonalBookmarksResponse>> GetPersonalBookmarks(string authToken, Int64 characterId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/bookmarks/", Method.GET,
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/bookmarks/",
                     authToken);
 
             request.AddParameter("page", page, ParameterType.QueryString);
@@ -42,7 +42,7 @@ namespace EveESIClient.Bookmarks
         /// <returns></returns>
         public ESIResponse<List<GetPersonalBookmarkFoldersResponse>> GetPersonalBookmarkFolders(string authToken, Int64 characterId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/bookmarks/folders/", Method.GET,
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/bookmarks/folders/",
                     authToken);
 
             request.AddParameter("page", page, ParameterType.QueryString);
@@ -59,7 +59,7 @@ namespace EveESIClient.Bookmarks
         /// <returns>A list of bookmarks</returns>
         public ESIResponse<List<GetCorporationBookmarksResponse>> GetCorporationBookmarks(string authToken, Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/bookmarks/", Method.GET,
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/bookmarks/",
                     authToken);
 
             request.AddParameter("page", page, ParameterType.QueryString);
@@ -76,7 +76,7 @@ namespace EveESIClient.Bookmarks
         /// <returns></returns>
         public ESIResponse<List<GetCorporationBookmarkFoldersResponse>> GetCorporationBookmarkFolders(string authToken, Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/bookmarks/folders/", Method.GET,
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/bookmarks/folders/",
                     authToken);
 
             request.AddParameter("page", page, ParameterType.QueryString);

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Corporation
 {
@@ -19,6 +17,5 @@ namespace EveESIClient.Models.Corporation
         public DateTime? Unanchor_at { get; set; }
         public DateTime? Reinforced_until { get; set; }
         public DateTime? Onlined_since { get; set; }
-
     }
 }

@@ -1,6 +1,4 @@
-﻿
-
-namespace EveESIClient.Models.Configuration
+﻿namespace EveESIClient.Models.Configuration
 {
     public enum ClientTarget
     {

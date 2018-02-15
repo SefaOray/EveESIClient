@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Fittings
 {
@@ -12,13 +11,11 @@ namespace EveESIClient.Models.Fittings
         public Int64 Ship_type_id { get; set; }
         public List<FittingItem> Items { get; set; }
 
-
         public class FittingItem
         {
             public int Type_id { get; set; }
             public int Flag { get; set; }
             public int Quantity { get; set; }
         }
-
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EveESIClient.Models.Corporation
+﻿namespace EveESIClient.Models.Corporation
 {
     public class GetCorporationIconResponse
     {

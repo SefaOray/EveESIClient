@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.FactionWarfare
 {
@@ -11,7 +9,6 @@ namespace EveESIClient.Models.FactionWarfare
         public int Systems_controlled { get; set; }
         public FwStatsKills Kills { get; set; }
         public FwStatsVictoryPoints Victory_points { get; set; }
-
 
         public class FwStatsKills
         {
@@ -26,6 +23,5 @@ namespace EveESIClient.Models.FactionWarfare
             public int Last_week { get; set; }
             public int Total { get; set; }
         }
-
     }
 }

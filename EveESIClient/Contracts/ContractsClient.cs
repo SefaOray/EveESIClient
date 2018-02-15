@@ -1,16 +1,15 @@
 ﻿using EveESIClient.Client;
 using EveESIClient.Helpers;
 using EveESIClient.Models.Contracts;
-using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Contracts
 {
     public class ContractsClient
     {
         private readonly IHttpClient _client;
+
         internal ContractsClient(IHttpClient client)
         {
             _client = client;
@@ -25,7 +24,7 @@ namespace EveESIClient.Contracts
         /// <returns>A list of contracts</returns>
         public ESIResponse<List<GetCharacterContractsResponse>> GetCharacterContracts(string authToken, Int64 characterId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contracts/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contracts/", authToken);
 
             return _client.Execute<List<GetCharacterContractsResponse>>(request);
         }
@@ -39,7 +38,7 @@ namespace EveESIClient.Contracts
         /// <returns>A list of bids</returns>
         public ESIResponse<List<GetCharacterContractBidsResponse>> GetCharacterContractBids(string authToken, Int64 characterId, Int64 contractId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contracts/{contractId}/bids/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contracts/{contractId}/bids/", authToken);
 
             return _client.Execute<List<GetCharacterContractBidsResponse>>(request);
         }
@@ -53,7 +52,7 @@ namespace EveESIClient.Contracts
         /// <returns>A list of items in this contract</returns>
         public ESIResponse<List<GetcharacterContractItemsResponse>> GetCharacterContractItems(string authToken, Int64 characterId, Int64 contractId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contracts/{contractId}/items/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contracts/{contractId}/items/", authToken);
 
             return _client.Execute<List<GetcharacterContractItemsResponse>>(request);
         }
@@ -67,7 +66,7 @@ namespace EveESIClient.Contracts
         /// <returns>A list of contracts</returns>
         public ESIResponse<List<GetCorporationContractsResponse>> GetCorporationContracts(string authToken, Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/contracts/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/contracts/", authToken);
 
             return _client.Execute<List<GetCorporationContractsResponse>>(request);
         }
@@ -81,7 +80,7 @@ namespace EveESIClient.Contracts
         /// <returns>A list of bids</returns>
         public ESIResponse<List<GetCorporationContractBidsResponse>> GetCorporationContractBids(string authToken, Int64 corporationId, Int64 contractId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/contracts/{contractId}/bids/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/contracts/{contractId}/bids/", authToken);
 
             return _client.Execute<List<GetCorporationContractBidsResponse>>(request);
         }
@@ -95,7 +94,7 @@ namespace EveESIClient.Contracts
         /// <returns>A list of items in this contract</returns>
         public ESIResponse<List<GetCorporationContractItemsResponse>> GetCorporationContractItems(string authToken, Int64 corporationId, Int64 contractId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/contracts/{contractId}/items/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/contracts/{contractId}/items/", authToken);
 
             return _client.Execute<List<GetCorporationContractItemsResponse>>(request);
         }

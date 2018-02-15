@@ -4,13 +4,13 @@ using EveESIClient.Models.Contacts;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Contacts
 {
     public class ContactsClient
     {
         private readonly IHttpClient _client;
+
         internal ContactsClient(IHttpClient client)
         {
             _client = client;
@@ -25,7 +25,7 @@ namespace EveESIClient.Contacts
         /// <returns>A list of contacts</returns>
         public ESIResponse<List<GetAllianceContactsResponse>> GetAllianceContacts(string authToken, Int64 allianceId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"alliances/{allianceId}/contacts/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"alliances/{allianceId}/contacts/", authToken);
 
             return _client.Execute<List<GetAllianceContactsResponse>>(request);
         }
@@ -39,14 +39,14 @@ namespace EveESIClient.Contacts
         /// <returns>IsSuccessful will be true on successfull call</returns>
         public ESIResponse<object> DeleteCharacterContacts(string authToken, Int64 characterId, Int64[] contactIds)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contacts/", Method.DELETE, authToken);
+            var request = RestRequestHelper.CreateAuthorizedDeleteRequest($"characters/{characterId}/contacts/", authToken);
             request.AddParameter("contact_ids", contactIds, ParameterType.QueryString);
 
             return _client.Execute<object>(request);
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="authToken"></param>
         /// <param name="characterId"></param>
@@ -54,7 +54,7 @@ namespace EveESIClient.Contacts
         /// <returns></returns>
         public ESIResponse<List<GetCharacterContactsResponse>> GetCharacterContacts(string authToken, Int64 characterId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contacts/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contacts/", authToken);
 
             return _client.Execute<List<GetCharacterContactsResponse>>(request);
         }
@@ -69,9 +69,9 @@ namespace EveESIClient.Contacts
         /// <param name="labelId">Add a custom label to the new contact</param>
         /// <param name="watched">Whether the new contact should be watched, note this is only effective on characters</param>
         /// <returns>A list of contact ids that successfully created</returns>
-        public ESIResponse<List<Int64>> AddContacts(string authToken, Int64 characterId, Int64[] contactIds,float standing, int? labelId, bool? watched)
+        public ESIResponse<List<Int64>> AddContacts(string authToken, Int64 characterId, Int64[] contactIds, float standing, int? labelId, bool? watched)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contacts/", Method.POST, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPostRequest($"characters/{characterId}/contacts/", authToken);
             request.AddParameter("standing", standing, ParameterType.QueryString);
             request.AddParameter("label_id", labelId, ParameterType.QueryString);
             request.AddParameter("watched", watched, ParameterType.QueryString);
@@ -92,7 +92,7 @@ namespace EveESIClient.Contacts
         /// <returns>IsSuccessful will be true on successfull call</returns>
         public ESIResponse<object> UpdateContacts(string authToken, Int64 characterId, Int64[] contactIds, float standing, int? labelId, bool? watched)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contacts/", Method.PUT, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPutRequest($"characters/{characterId}/contacts/", authToken);
             request.AddParameter("standing", standing, ParameterType.QueryString);
             request.AddParameter("label_id", labelId, ParameterType.QueryString);
             request.AddParameter("watched", watched, ParameterType.QueryString);
@@ -109,8 +109,7 @@ namespace EveESIClient.Contacts
         /// <returns>A list of contact labels</returns>
         public ESIResponse<List<GetContactLabelsResponse>> GetContactLabels(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/contacts/labels/", Method.GET, authToken);
-
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contacts/labels/", authToken);
 
             return _client.Execute<List<GetContactLabelsResponse>>(request);
         }
@@ -124,7 +123,7 @@ namespace EveESIClient.Contacts
         /// <returns>A list of contacts</returns>
         public ESIResponse<List<GetCorporationContactsResponse>> GetCorporationContacts(string authToken, Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/contacts/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/contacts/", authToken);
 
             return _client.Execute<List<GetCorporationContactsResponse>>(request);
         }

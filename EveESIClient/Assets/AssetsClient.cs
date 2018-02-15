@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using EveESIClient.Client;
+﻿using EveESIClient.Client;
 using EveESIClient.Helpers;
 using EveESIClient.Models.Assets;
 using RestSharp;
+using System;
+using System.Collections.Generic;
 
 namespace EveESIClient.Assets
 {
     public class AssetsClient
     {
         private readonly IHttpClient _client;
+
         internal AssetsClient(IHttpClient client)
         {
             _client = client;
@@ -25,10 +26,10 @@ namespace EveESIClient.Assets
         public ESIResponse<List<GetCharacterAssetsResponse>> GetCharacterAssets(string authToken, Int64 characterId, int page = 0)
         {
             var request =
-                RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/assets/", Method.GET,
+                RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/assets/",
                     authToken);
 
-            request.AddParameter("page", page,ParameterType.QueryString);
+            request.AddParameter("page", page, ParameterType.QueryString);
 
             return _client.Execute<List<GetCharacterAssetsResponse>>(request);
         }
@@ -43,8 +44,7 @@ namespace EveESIClient.Assets
         public ESIResponse<List<GetCharacterAssetsLocationsResponse>> GetCharacterAssetsLocations(string authToken,
             Int64 characterId, Int64[] itemIds)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/assets/locations/",
-                Method.POST, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPostRequest($"characters/{characterId}/assets/locations/", authToken);
 
             request.AddBody(itemIds);
 
@@ -61,8 +61,7 @@ namespace EveESIClient.Assets
         public ESIResponse<List<GetCharacterAssetsNamesResponse>> GetCharacterAssetsNames(string authToken,
             Int64 characterId, Int64[] itemIds)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/assets/names/",
-                Method.POST, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPostRequest($"characters/{characterId}/assets/names/", authToken);
 
             request.AddBody(itemIds);
 
@@ -79,7 +78,7 @@ namespace EveESIClient.Assets
         public ESIResponse<List<GetCorporationAssetsResponse>> GetCorporationAssets(string authToken, Int64 corporationId, int page = 0)
         {
             var request =
-                RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/assets/", Method.GET,
+                RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/assets/",
                     authToken);
 
             request.AddParameter("page", page, ParameterType.QueryString);
@@ -97,8 +96,7 @@ namespace EveESIClient.Assets
         public ESIResponse<List<GetCorporationAssetsLocationsResponse>> GetCorporationAssetsLocations(string authToken,
             Int64 corporationId, Int64[] itemIds)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/assets/locations/",
-                Method.POST, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPostRequest($"corporations/{corporationId}/assets/locations/", authToken);
 
             request.AddBody(itemIds);
 
@@ -115,7 +113,7 @@ namespace EveESIClient.Assets
         public ESIResponse<List<GetCorporationAssetsNamesResponse>> GetCorporationAssetsNames(string authToken,
             Int64 corporationId, Int64[] itemIds)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/assets/names/",
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/assets/names/",
                 Method.POST, authToken);
 
             request.AddBody(itemIds);

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Contracts
 {
@@ -19,6 +17,7 @@ namespace EveESIClient.Models.Contracts
         /// [ outstanding, in_progress, finished_issuer, finished_contractor, finished, cancelled, rejected, failed, deleted, reversed ]
         /// </summary>
         public string Status { get; set; }
+
         public string Title { get; set; }
 
         /// <summary>
@@ -30,6 +29,7 @@ namespace EveESIClient.Models.Contracts
         /// [ public, personal, corporation, alliance ]
         /// </summary>
         public string Availability { get; set; }
+
         public DateTime Date_issued { get; set; }
         public DateTime Date_expired { get; set; }
         public DateTime? Date_accepted { get; set; }

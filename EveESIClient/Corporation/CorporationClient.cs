@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EveESIClient.Client;
+﻿using EveESIClient.Client;
 using EveESIClient.Helpers;
 using EveESIClient.Models.Corporation;
 using RestSharp;
+using System;
+using System.Collections.Generic;
 
 namespace EveESIClient.Corporation
 {
     public class CorporationClient
     {
         private readonly IHttpClient _client;
+
         internal CorporationClient(IHttpClient client)
         {
             _client = client;
@@ -23,7 +23,7 @@ namespace EveESIClient.Corporation
         /// <returns>Public information about a corporation</returns>
         public ESIResponse<GetCorporationResponse> GetCorporation(Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateRestRequest($"corporations/{corporationId}/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/", Method.GET);
 
             return _client.Execute<GetCorporationResponse>(request);
         }
@@ -35,7 +35,7 @@ namespace EveESIClient.Corporation
         /// <returns>Alliance history for the given corporation</returns>
         public ESIResponse<List<GetCorporationAllianceHistoryResponse>> GetCorporationAllianceHistory(Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateRestRequest($"corporations/{corporationId}/alliancehistory/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/alliancehistory/", Method.GET);
 
             return _client.Execute<List<GetCorporationAllianceHistoryResponse>>(request);
         }
@@ -49,8 +49,8 @@ namespace EveESIClient.Corporation
         /// <returns>List of corporation blueprints</returns>
         public ESIResponse<List<GetCorporationBlueprintsResponse>> GetCorporationBlueprints(string authToken, Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/blueprints/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/blueprints/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationBlueprintsResponse>>(request);
@@ -66,8 +66,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationContainerLogsResponse>> GetCorporationContainerLogs(string authToken,
             Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/containers/logs/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/containers/logs/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationContainerLogsResponse>>(request);
@@ -82,8 +82,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<GetCorporationDivisionsResponse> GetCorporationDivisions(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/divisions/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/divisions/",
+                 authToken);
 
             return _client.Execute<GetCorporationDivisionsResponse>(request);
         }
@@ -97,8 +97,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationFacilitiesResponse>> GetCorpotaionFacilities(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/facilities/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/facilities/",
+                 authToken);
 
             return _client.Execute<List<GetCorporationFacilitiesResponse>>(request);
         }
@@ -110,7 +110,7 @@ namespace EveESIClient.Corporation
         /// <returns>Urls for icons for the given corporation id and server</returns>
         public ESIResponse<GetCorporationIconResponse> GetCorporationIcon(Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateRestRequest($"corporations/{corporationId}/icons/",
+            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/icons/",
                 Method.GET);
 
             return _client.Execute<GetCorporationIconResponse>(request);
@@ -126,10 +126,9 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationMetalsResponse>> GetCorporationMedals(string authToken,
             Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/medals/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/medals/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
-
 
             return _client.Execute<List<GetCorporationMetalsResponse>>(request);
         }
@@ -144,10 +143,9 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationIssuedMedals>> GetCorporationIssuedMedals(string authToken,
             Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/medals/issued/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/medals/issued/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
-
 
             return _client.Execute<List<GetCorporationIssuedMedals>>(request);
         }
@@ -161,8 +159,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<Int64>> GetCorporationMembers(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/members/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/members/",
+                 authToken);
 
             return _client.Execute<List<Int64>>(request);
         }
@@ -175,8 +173,8 @@ namespace EveESIClient.Corporation
         /// <returns>The corporation’s member limit</returns>
         public ESIResponse<int> GetCorporationMemberLimit(string authToken, Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/members/limit/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/members/limit/",
+                 authToken);
 
             return _client.Execute<int>(request);
         }
@@ -190,8 +188,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationMemberTitlesResponse>> GetCorporationMemberTitles(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/members/titles/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/members/titles/",
+                 authToken);
 
             return _client.Execute<List<GetCorporationMemberTitlesResponse>>(request);
         }
@@ -205,17 +203,17 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationMemberTracking>> GetCorporationMemberTracking(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/membertracking/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/membertracking/",
+                 authToken);
 
             return _client.Execute<List<GetCorporationMemberTracking>>(request);
         }
 
         /// <summary>
-        /// Get a list of corporation outpost IDs 
+        /// Get a list of corporation outpost IDs
         /// </summary>
         /// <remarks>
-        /// Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: 
+        /// Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog:
         /// https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/
         /// </remarks>
         /// <param name="authToken">Access token to use</param>
@@ -225,8 +223,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<Int64>> GetCorporationOutposts(string authToken,
             Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/outposts/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/outposts/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
 
             return _client.Execute<List<Int64>>(request);
@@ -246,8 +244,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<GetCorporationOutpostDetailResponse> GetCorporationOutpostDetail(string authToken,
             Int64 corporationId, Int64 outpostId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/outposts/{outpostId}/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/outposts/{outpostId}/",
+                 authToken);
 
             return _client.Execute<GetCorporationOutpostDetailResponse>(request);
         }
@@ -261,8 +259,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationMemberRolesResponse>> GetCorporationMemberRoles(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/roles/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/roles/",
+                 authToken);
 
             return _client.Execute<List<GetCorporationMemberRolesResponse>>(request);
         }
@@ -276,8 +274,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationMemberRolesHistoryResponse>> GetCorporationMemberRolesHistory(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/roles/history/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/roles/history/",
+                 authToken);
 
             return _client.Execute<List<GetCorporationMemberRolesHistoryResponse>>(request);
         }
@@ -292,8 +290,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationShareholdersResponse>> GetCorporationShareholders(string authToken,
             Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/shareholders/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/shareholders/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationShareholdersResponse>>(request);
@@ -308,8 +306,8 @@ namespace EveESIClient.Corporation
         /// <returns>A list of standings</returns>
         public ESIResponse<List<GetCorporationStandingsResponse>> GetCorporationStandings(string authToken, Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/standings/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/standings/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationStandingsResponse>>(request);
@@ -325,8 +323,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationStarbasesResponse>> GetCorporationStarbases(string authToken, Int64 corporationId,
             int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/starbases/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/starbases/",
+                 authToken);
             request.AddParameter("page", page, ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationStarbasesResponse>>(request);
@@ -343,8 +341,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<GetCorporationStarbaseDetailResponse> GetCorporationStarbaseDetail(string authToken,
             Int64 corporationId, Int64 starbaseId, Int64 systemId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/starbases/{starbaseId}/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/starbases/{starbaseId}/",
+                 authToken);
             request.AddParameter("system_id ", systemId, ParameterType.QueryString);
 
             return _client.Execute<GetCorporationStarbaseDetailResponse>(request);
@@ -360,8 +358,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationStructuresResponse>> GetCorporationStructures(string authToken,
             Int64 corporationId, int page = 0)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/structures/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/structures/",
+                 authToken);
             request.AddParameter("page ", page, ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationStructuresResponse>>(request);
@@ -379,8 +377,7 @@ namespace EveESIClient.Corporation
             Int64 corporationId, Int64 structureId,
             List<UpdateCorporationStructureVulnerabilityScheduleInput> newSchedule)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/structures/{structureId}/",
-                Method.PUT, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPutRequest($"corporations/{corporationId}/structures/{structureId}/", authToken);
             request.AddBody(newSchedule);
 
             return _client.Execute<object>(request);
@@ -395,8 +392,8 @@ namespace EveESIClient.Corporation
         public ESIResponse<List<GetCorporationTitlesResponse>> GetCorporationTitles(string authToken,
             Int64 corporationId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"corporations/{corporationId}/titles/",
-                Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/titles/",
+                 authToken);
 
             return _client.Execute<List<GetCorporationTitlesResponse>>(request);
         }
@@ -408,7 +405,7 @@ namespace EveESIClient.Corporation
         /// <returns>List of id/name associations</returns>
         public ESIResponse<List<GetCorporationNamesResponse>> GetCorporationNames(Int64[] corporationIds)
         {
-            var request = RestRequestHelper.CreateRestRequest($"corporations/names/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/names/", Method.GET);
             request.AddParameter("corporation_ids", string.Join(",", corporationIds), ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationNamesResponse>>(request);
@@ -420,7 +417,7 @@ namespace EveESIClient.Corporation
         /// <returns>A list of npc corporation ids</returns>
         public ESIResponse<List<Int64>> GetNpcCorporations()
         {
-            var request = RestRequestHelper.CreateRestRequest($"corporations/npccorps/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/npccorps/", Method.GET);
 
             return _client.Execute<List<Int64>>(request);
         }

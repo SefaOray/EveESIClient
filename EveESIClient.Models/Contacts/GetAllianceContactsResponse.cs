@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.Contacts
 {
@@ -10,6 +8,7 @@ namespace EveESIClient.Models.Contacts
         /// Standing of the contact
         /// </summary>
         public float Standing { get; set; }
+
         public string Contact_type { get; set; }
         public Int64 Contact_id { get; set; }
 

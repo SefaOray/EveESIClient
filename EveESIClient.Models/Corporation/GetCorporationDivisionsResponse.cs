@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace EveESIClient.Models.Corporation
 {
@@ -13,7 +11,6 @@ namespace EveESIClient.Models.Corporation
         {
             public int? Division { get; set; }
             public string Name { get; set; }
-
         }
 
         public class CorporationDivisionsWallet

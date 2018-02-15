@@ -1,16 +1,15 @@
 ﻿using EveESIClient.Client;
 using EveESIClient.Helpers;
 using EveESIClient.Models.Clones;
-using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Clones
 {
     public class ClonesClient
     {
         private readonly IHttpClient _client;
+
         internal ClonesClient(IHttpClient client)
         {
             _client = client;
@@ -24,7 +23,7 @@ namespace EveESIClient.Clones
         /// <returns>Clone information for the given character</returns>
         public ESIResponse<GetClonesResponse> GetClones(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/clones/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/clones/", authToken);
 
             return _client.Execute<GetClonesResponse>(request);
         }
@@ -37,7 +36,7 @@ namespace EveESIClient.Clones
         /// <returns>A list of implant type ids</returns>
         public ESIResponse<List<Int64>> GetImplants(string authToken, Int64 characterId)
         {
-            var request = RestRequestHelper.CreateAuthrorizedRestRequest($"characters/{characterId}/implants/", Method.GET, authToken);
+            var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/implants/", authToken);
 
             return _client.Execute<List<Int64>>(request);
         }

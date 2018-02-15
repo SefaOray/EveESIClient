@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EveESIClient.Client
+﻿namespace EveESIClient.Client
 {
     internal class ClientFactory
     {

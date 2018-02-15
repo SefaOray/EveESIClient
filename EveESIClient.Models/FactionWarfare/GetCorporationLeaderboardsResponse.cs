@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EveESIClient.Models.FactionWarfare
 {
@@ -8,7 +7,6 @@ namespace EveESIClient.Models.FactionWarfare
     {
         public LeaderBoardKills Kills { get; set; }
         public LeaderboardVictoryPoints Victory_points { get; set; }
-
 
         public class LeaderBoardKills
         {
