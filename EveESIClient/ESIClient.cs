@@ -13,6 +13,7 @@ using EveESIClient.FactionWarfare;
 using EveESIClient.Fittings;
 using EveESIClient.Fleets;
 using EveESIClient.Industry;
+using EveESIClient.Insurance;
 using EveESIClient.Models.Configuration;
 using System;
 
@@ -50,6 +51,7 @@ namespace EveESIClient
         public FittingsClient Fittings => new FittingsClient(_clientFactory.GetClient());
         public FleetsClient Fleets => new FleetsClient(_clientFactory.GetClient());
         public IndustryClient Industry => new IndustryClient(_clientFactory.GetClient());
+        public InsuranceClient Insurance => new InsuranceClient(_clientFactory.GetClient());
 
         #endregion Clients
 
