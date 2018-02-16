@@ -12,6 +12,7 @@ using EveESIClient.Dogma;
 using EveESIClient.FactionWarfare;
 using EveESIClient.Fittings;
 using EveESIClient.Fleets;
+using EveESIClient.Industry;
 using EveESIClient.Models.Configuration;
 using System;
 
@@ -48,6 +49,7 @@ namespace EveESIClient
         public FactionWarfareClient FactionWarfare => new FactionWarfareClient(_clientFactory.GetClient());
         public FittingsClient Fittings => new FittingsClient(_clientFactory.GetClient());
         public FleetsClient Fleets => new FleetsClient(_clientFactory.GetClient());
+        public IndustryClient Industry => new IndustryClient(_clientFactory.GetClient());
 
         #endregion Clients
 
