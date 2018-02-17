@@ -23,7 +23,7 @@ namespace EveESIClient.Bookmarks
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="page">Which page of results to return (Default is 0)</param>
         /// <returns>A list of bookmarks</returns>
-        public ESIResponse<List<GetPersonalBookmarksResponse>> GetPersonalBookmarks(string authToken, Int64 characterId, int page = 0)
+        public ESIResponse<List<GetPersonalBookmarksResponse>> GetPersonalBookmarks(string authToken, int characterId, int page = 0)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/bookmarks/",
                     authToken);
@@ -40,7 +40,7 @@ namespace EveESIClient.Bookmarks
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="page">Which page of results to return (Default is 0)</param>
         /// <returns></returns>
-        public ESIResponse<List<GetPersonalBookmarkFoldersResponse>> GetPersonalBookmarkFolders(string authToken, Int64 characterId, int page = 0)
+        public ESIResponse<List<GetPersonalBookmarkFoldersResponse>> GetPersonalBookmarkFolders(string authToken, int characterId, int page = 0)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/bookmarks/folders/",
                     authToken);
@@ -57,7 +57,7 @@ namespace EveESIClient.Bookmarks
         /// <param name="corporationId">An EVE corporation ID</param>
         /// <param name="page">Which page of results to return (Default is 0)</param>
         /// <returns>A list of bookmarks</returns>
-        public ESIResponse<List<GetCorporationBookmarksResponse>> GetCorporationBookmarks(string authToken, Int64 corporationId, int page = 0)
+        public ESIResponse<List<GetCorporationBookmarksResponse>> GetCorporationBookmarks(string authToken, int corporationId, int page = 0)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/bookmarks/",
                     authToken);
@@ -74,7 +74,7 @@ namespace EveESIClient.Bookmarks
         /// <param name="corporationId">An EVE corporation ID</param>
         /// <param name="page">Which page of results to return (Default is 0)</param>
         /// <returns></returns>
-        public ESIResponse<List<GetCorporationBookmarkFoldersResponse>> GetCorporationBookmarkFolders(string authToken, Int64 corporationId, int page = 0)
+        public ESIResponse<List<GetCorporationBookmarkFoldersResponse>> GetCorporationBookmarkFolders(string authToken, int corporationId, int page = 0)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/bookmarks/folders/",
                     authToken);

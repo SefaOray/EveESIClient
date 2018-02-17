@@ -21,7 +21,7 @@ namespace EveESIClient.Clones
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Clone information for the given character</returns>
-        public ESIResponse<GetClonesResponse> GetClones(string authToken, Int64 characterId)
+        public ESIResponse<GetClonesResponse> GetClones(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/clones/", authToken);
 
@@ -34,7 +34,7 @@ namespace EveESIClient.Clones
         /// <param name="authToken">An EVE character ID</param>
         /// <param name="characterId">Access token to use </param>
         /// <returns>A list of implant type ids</returns>
-        public ESIResponse<List<Int64>> GetImplants(string authToken, Int64 characterId)
+        public ESIResponse<List<Int64>> GetImplants(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/implants/", authToken);
 

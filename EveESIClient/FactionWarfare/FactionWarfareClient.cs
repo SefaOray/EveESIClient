@@ -22,7 +22,7 @@ namespace EveESIClient.FactionWarfare
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Faction warfare statistics for a given character</returns>
-        public ESIResponse<GetCharacterFactionWarfareStatsResponse> GetCharacterFactionWarfareStats(string authToken, Int64 characterId)
+        public ESIResponse<GetCharacterFactionWarfareStatsResponse> GetCharacterFactionWarfareStats(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/fw/stats/", authToken);
 
@@ -35,7 +35,7 @@ namespace EveESIClient.FactionWarfare
         /// <param name="authToken">Access token to use</param>
         /// <param name="corporationId">An EVE corporation ID</param>
         /// <returns>Faction warfare statistics for a given corporation</returns>
-        public ESIResponse<GetCorporationFactionWarfareStatsResponse> GetCorporationFactionWarfareStats(string authToken, Int64 corporationId)
+        public ESIResponse<GetCorporationFactionWarfareStatsResponse> GetCorporationFactionWarfareStats(string authToken, int corporationId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/fw/stats/", authToken);
 

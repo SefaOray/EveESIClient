@@ -20,7 +20,7 @@ namespace EveESIClient.Character
         /// </summary>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Public data for the given character</returns>
-        public ESIResponse<GetCharacterResponse> GetCharacter(Int64 characterId)
+        public ESIResponse<GetCharacterResponse> GetCharacter(int characterId)
         {
             var request = RestRequestHelper.CreateGetRequest($"characters/{characterId}/");
 
@@ -35,7 +35,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>A list of agents research information</returns>
-        public ESIResponse<List<GetAgentResearchResponse>> GetAgentResearch(string authToken, Int64 characterId)
+        public ESIResponse<List<GetAgentResearchResponse>> GetAgentResearch(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/agents_research/", authToken);
 
@@ -48,7 +48,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>A list of blueprints</returns>
-        public ESIResponse<List<GetBlueprintsResponse>> GetBlueprints(string authToken, Int64 characterId)
+        public ESIResponse<List<GetBlueprintsResponse>> GetBlueprints(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/blueprints/", authToken);
 
@@ -61,7 +61,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>A list of chat channels</returns>
-        public ESIResponse<List<GetChatChannelsResponse>> GetChatChannels(string authToken, Int64 characterId)
+        public ESIResponse<List<GetChatChannelsResponse>> GetChatChannels(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/chat_channels/", authToken);
 
@@ -73,7 +73,7 @@ namespace EveESIClient.Character
         /// </summary>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Corporation history for the given character</returns>
-        public ESIResponse<List<GetCorporationHistoryResponse>> GetCorporationHistory(Int64 characterId)
+        public ESIResponse<List<GetCorporationHistoryResponse>> GetCorporationHistory(int characterId)
         {
             var request = RestRequestHelper.CreateGetRequest($"characters/{characterId}/corporationhistory/");
 
@@ -87,7 +87,7 @@ namespace EveESIClient.Character
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="targetCharacters">The target characters to calculate the charge for</param>
         /// <returns>Aggregate cost of sending a mail from the source character to the target characters, in ISK</returns>
-        public ESIResponse<float> Cspa(string authToken, Int64 characterId, List<Int64> targetCharacters)
+        public ESIResponse<float> Cspa(string authToken, int characterId, List<Int64> targetCharacters)
         {
             var request = RestRequestHelper.CreateAuthorizedPostRequest($"characters/{characterId}/cspa/", authToken);
 
@@ -102,7 +102,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Jump activation and fatigue information</returns>
-        public ESIResponse<GetFatigueResponse> GetFatigue(string authToken, Int64 characterId)
+        public ESIResponse<GetFatigueResponse> GetFatigue(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/fatigue/", authToken);
 
@@ -115,7 +115,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>A list of medals</returns>
-        public ESIResponse<List<GetCharacterMedalsResponse>> GetCharacterMedals(string authToken, Int64 characterId)
+        public ESIResponse<List<GetCharacterMedalsResponse>> GetCharacterMedals(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/medals/", authToken);
 
@@ -128,7 +128,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Returns your recent notifications</returns>
-        public ESIResponse<List<GetCharacterNotificationsResponse>> GetCharacterNotifications(string authToken, Int64 characterId)
+        public ESIResponse<List<GetCharacterNotificationsResponse>> GetCharacterNotifications(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/notifications/", authToken);
 
@@ -141,7 +141,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>A list of contact notifications</returns>
-        public ESIResponse<List<GetContactNotificationsResponse>> GetContactNotifications(string authToken, Int64 characterId)
+        public ESIResponse<List<GetContactNotificationsResponse>> GetContactNotifications(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/notifications/contacts/", authToken);
 
@@ -153,7 +153,7 @@ namespace EveESIClient.Character
         /// </summary>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Public data for the given character</returns>
-        public ESIResponse<GetCharacterPortraitResponse> GetCharacterPortrait(Int64 characterId)
+        public ESIResponse<GetCharacterPortraitResponse> GetCharacterPortrait(int characterId)
         {
             var request = RestRequestHelper.CreateGetRequest($"characters/{characterId}/portrait/");
 
@@ -166,7 +166,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>The character’s roles in thier corporation</returns>
-        public ESIResponse<List<GetCharacterRolesResponse>> GetCharacterRoles(string authToken, Int64 characterId)
+        public ESIResponse<List<GetCharacterRolesResponse>> GetCharacterRoles(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/roles/", authToken);
 
@@ -179,7 +179,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>A list of standings</returns>
-        public ESIResponse<List<GetCharacterStandingsResponse>> GetCharacterStandings(string authToken, Int64 characterId)
+        public ESIResponse<List<GetCharacterStandingsResponse>> GetCharacterStandings(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/standings/", authToken);
 
@@ -192,7 +192,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>Character stats</returns>
-        public ESIResponse<List<GetCharacterStatsResponse>> GetCharacterStats(string authToken, Int64 characterId)
+        public ESIResponse<List<GetCharacterStatsResponse>> GetCharacterStats(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/stats/", authToken);
 
@@ -205,7 +205,7 @@ namespace EveESIClient.Character
         /// <param name="authToken">Access token to use</param>
         /// <param name="characterId">An EVE character ID</param>
         /// <returns>A list of titles</returns>
-        public ESIResponse<List<GetCharacterTitlesResponse>> GetCharacterTitles(string authToken, Int64 characterId)
+        public ESIResponse<List<GetCharacterTitlesResponse>> GetCharacterTitles(string authToken, int characterId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/titles/", authToken);
 

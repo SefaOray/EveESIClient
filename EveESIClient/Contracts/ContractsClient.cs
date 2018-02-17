@@ -22,7 +22,7 @@ namespace EveESIClient.Contracts
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="page">Which page of results to return (Default is 0)</param>
         /// <returns>A list of contracts</returns>
-        public ESIResponse<List<GetCharacterContractsResponse>> GetCharacterContracts(string authToken, Int64 characterId, int page = 0)
+        public ESIResponse<List<GetCharacterContractsResponse>> GetCharacterContracts(string authToken, int characterId, int page = 0)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contracts/", authToken);
 
@@ -36,7 +36,7 @@ namespace EveESIClient.Contracts
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="contractId">ID of a contract</param>
         /// <returns>A list of bids</returns>
-        public ESIResponse<List<GetCharacterContractBidsResponse>> GetCharacterContractBids(string authToken, Int64 characterId, Int64 contractId)
+        public ESIResponse<List<GetCharacterContractBidsResponse>> GetCharacterContractBids(string authToken, int characterId, Int64 contractId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contracts/{contractId}/bids/", authToken);
 
@@ -50,7 +50,7 @@ namespace EveESIClient.Contracts
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="contractId">ID of a contract</param>
         /// <returns>A list of items in this contract</returns>
-        public ESIResponse<List<GetcharacterContractItemsResponse>> GetCharacterContractItems(string authToken, Int64 characterId, Int64 contractId)
+        public ESIResponse<List<GetcharacterContractItemsResponse>> GetCharacterContractItems(string authToken, int characterId, Int64 contractId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/contracts/{contractId}/items/", authToken);
 
@@ -64,7 +64,7 @@ namespace EveESIClient.Contracts
         /// <param name="corporationId">An EVE corporation ID</param>
         /// <param name="page">Which page of results to return (Default is 0)</param>
         /// <returns>A list of contracts</returns>
-        public ESIResponse<List<GetCorporationContractsResponse>> GetCorporationContracts(string authToken, Int64 corporationId, int page = 0)
+        public ESIResponse<List<GetCorporationContractsResponse>> GetCorporationContracts(string authToken, int corporationId, int page = 0)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/contracts/", authToken);
 
@@ -78,7 +78,7 @@ namespace EveESIClient.Contracts
         /// <param name="corporationId">An EVE corporation ID</param>
         /// <param name="contractId">ID of a contract</param>
         /// <returns>A list of bids</returns>
-        public ESIResponse<List<GetCorporationContractBidsResponse>> GetCorporationContractBids(string authToken, Int64 corporationId, Int64 contractId)
+        public ESIResponse<List<GetCorporationContractBidsResponse>> GetCorporationContractBids(string authToken, int corporationId, Int64 contractId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/contracts/{contractId}/bids/", authToken);
 
@@ -92,7 +92,7 @@ namespace EveESIClient.Contracts
         /// <param name="corporationId">An EVE corporation ID</param>
         /// <param name="contractId">ID of a contract</param>
         /// <returns>A list of items in this contract</returns>
-        public ESIResponse<List<GetCorporationContractItemsResponse>> GetCorporationContractItems(string authToken, Int64 corporationId, Int64 contractId)
+        public ESIResponse<List<GetCorporationContractItemsResponse>> GetCorporationContractItems(string authToken, int corporationId, Int64 contractId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/contracts/{contractId}/items/", authToken);
 

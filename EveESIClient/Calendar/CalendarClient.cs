@@ -25,7 +25,7 @@ namespace EveESIClient.Calendar
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="fromEvent">The event ID to retrieve events from</param>
         /// <returns>A collection of event summaries</returns>
-        public ESIResponse<List<GetCharacterCalendarResponse>> GetCharacterCalendar(string authToken, Int64 characterId, Int64? fromEvent)
+        public ESIResponse<List<GetCharacterCalendarResponse>> GetCharacterCalendar(string authToken, int characterId, Int64? fromEvent)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/calendar/",
                     authToken);
@@ -42,7 +42,7 @@ namespace EveESIClient.Calendar
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="eventId">The id of the event requested</param>
         /// <returns>Full details of a specific event</returns>
-        public ESIResponse<GetEventResponse> GetEvent(string authToken, Int64 characterId, Int64 eventId)
+        public ESIResponse<GetEventResponse> GetEvent(string authToken, int characterId, Int64 eventId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/calendar/{eventId}/",
                     authToken);
@@ -58,7 +58,7 @@ namespace EveESIClient.Calendar
         /// <param name="eventId">The id of the event requested</param>
         /// <param name="response">The response value to set, overriding current value. Candidates are: [ accepted, declined, tentative ]</param>
         /// <returns>IsSuccessful will be true on successfull call.</returns>
-        public ESIResponse<object> RespondEvent(string authToken, Int64 characterId, Int64 eventId, string response)
+        public ESIResponse<object> RespondEvent(string authToken, int characterId, Int64 eventId, string response)
         {
             var request = RestRequestHelper.CreateAuthorizedPutRequest($"characters/{characterId}/calendar/{eventId}/", authToken);
 
@@ -72,7 +72,7 @@ namespace EveESIClient.Calendar
         /// <param name="characterId">An EVE character ID</param>
         /// <param name="eventId">The id of the event requested</param>
         /// <returns>List of attendees</returns>
-        public ESIResponse<List<GetEventAttendeesResponse>> GetEventAttendees(string authToken, Int64 characterId, Int64 eventId)
+        public ESIResponse<List<GetEventAttendeesResponse>> GetEventAttendees(string authToken, int characterId, Int64 eventId)
         {
             var request = RestRequestHelper.CreateAuthorizedGetRequest($"characters/{characterId}/calendar/{eventId}/attendees/",
                     authToken);
