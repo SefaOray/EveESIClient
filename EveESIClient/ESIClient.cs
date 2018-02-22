@@ -17,6 +17,7 @@ using EveESIClient.Insurance;
 using EveESIClient.Killmails;
 using EveESIClient.Location;
 using EveESIClient.Mail;
+using EveESIClient.Market;
 using EveESIClient.Models.Configuration;
 using System;
 
@@ -58,6 +59,7 @@ namespace EveESIClient
         public KillmailsClient Killmails => new KillmailsClient(_clientFactory.GetClient());
         public LocationClient Location => new LocationClient(_clientFactory.GetClient());
         public MailClient Mail => new MailClient(_clientFactory.GetClient());
+        public MarketClient Market => new MarketClient(_clientFactory.GetClient());
         #endregion Clients
 
         public static void Configure(Func<ClientConfiguration> config)
