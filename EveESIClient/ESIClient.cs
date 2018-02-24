@@ -20,6 +20,7 @@ using EveESIClient.Mail;
 using EveESIClient.Market;
 using EveESIClient.Models.Configuration;
 using EveESIClient.Opportunities;
+using EveESIClient.PlanetaryInteraction;
 using System;
 
 namespace EveESIClient
@@ -62,6 +63,7 @@ namespace EveESIClient
         public MailClient Mail => new MailClient(_clientFactory.GetClient());
         public MarketClient Market => new MarketClient(_clientFactory.GetClient());
         public OpportunitiesClient Opportunities => new OpportunitiesClient(_clientFactory.GetClient());
+        public PlanetaryInteractionClient PlanetaryInteraction => new PlanetaryInteractionClient(_clientFactory.GetClient());
         #endregion Clients
 
         public static void Configure(Func<ClientConfiguration> config)
