@@ -21,4 +21,3 @@ namespace EveESIClient.Models.Contracts
         public bool Is_included { get; set; }
     }
 }
-}
