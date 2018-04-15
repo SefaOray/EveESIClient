@@ -92,7 +92,7 @@ namespace EveESIClient.FactionWarfare
         /// <returns>All faction war solar systems</returns>
         public ESIResponse<List<GetFactionWarfareSystemOwnershipsResponse>> GetFactionWarfareSystemOwnerships()
         {
-            var request = RestRequestHelper.CreateGetRequest($"fw/systems/";
+            var request = RestRequestHelper.CreateGetRequest($"fw/systems/");
 
             return _client.Execute<List<GetFactionWarfareSystemOwnershipsResponse>>(request);
         }
