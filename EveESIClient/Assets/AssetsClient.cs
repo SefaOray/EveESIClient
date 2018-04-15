@@ -113,8 +113,7 @@ namespace EveESIClient.Assets
         public ESIResponse<List<GetCorporationAssetsNamesResponse>> GetCorporationAssetsNames(string authToken,
             int corporationId, Int64[] itemIds)
         {
-            var request = RestRequestHelper.CreateAuthorizedGetRequest($"corporations/{corporationId}/assets/names/",
-                Method.POST, authToken);
+            var request = RestRequestHelper.CreateAuthorizedPostRequest($"corporations/{corporationId}/assets/names/", authToken);
 
             request.AddBody(itemIds);
 
