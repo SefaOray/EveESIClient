@@ -25,6 +25,7 @@ using EveESIClient.Routes;
 using EveESIClient.Search;
 using EveESIClient.Skills;
 using EveESIClient.Sovereignty;
+using EveESIClient.Status;
 using System;
 
 namespace EveESIClient
@@ -72,6 +73,7 @@ namespace EveESIClient
         public SearchClient Search => new SearchClient(_clientFactory.GetClient());
         public SkillsClient Skills => new SkillsClient(_clientFactory.GetClient());
         public SovereigntyClient Sovereignty => new SovereigntyClient(_clientFactory.GetClient());
+        public StatusClient Status => new StatusClient(_clientFactory.GetClient());
         #endregion Clients
 
         public static void Configure(Func<ClientConfiguration> config)
