@@ -23,7 +23,7 @@ namespace EveESIClient.Corporation
         /// <returns>Public information about a corporation</returns>
         public ESIResponse<GetCorporationResponse> GetCorporation(int corporationId)
         {
-            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/");
 
             return _client.Execute<GetCorporationResponse>(request);
         }
@@ -35,7 +35,7 @@ namespace EveESIClient.Corporation
         /// <returns>Alliance history for the given corporation</returns>
         public ESIResponse<List<GetCorporationAllianceHistoryResponse>> GetCorporationAllianceHistory(int corporationId)
         {
-            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/alliancehistory/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/alliancehistory/");
 
             return _client.Execute<List<GetCorporationAllianceHistoryResponse>>(request);
         }
@@ -110,8 +110,7 @@ namespace EveESIClient.Corporation
         /// <returns>Urls for icons for the given corporation id and server</returns>
         public ESIResponse<GetCorporationIconResponse> GetCorporationIcon(int corporationId)
         {
-            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/icons/",
-                Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/{corporationId}/icons/");
 
             return _client.Execute<GetCorporationIconResponse>(request);
         }
@@ -405,7 +404,7 @@ namespace EveESIClient.Corporation
         /// <returns>List of id/name associations</returns>
         public ESIResponse<List<GetCorporationNamesResponse>> GetCorporationNames(Int64[] corporationIds)
         {
-            var request = RestRequestHelper.CreateGetRequest($"corporations/names/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/names/");
             request.AddParameter("corporation_ids", string.Join(",", corporationIds), ParameterType.QueryString);
 
             return _client.Execute<List<GetCorporationNamesResponse>>(request);
@@ -417,7 +416,7 @@ namespace EveESIClient.Corporation
         /// <returns>A list of npc corporation ids</returns>
         public ESIResponse<List<Int64>> GetNpcCorporations()
         {
-            var request = RestRequestHelper.CreateGetRequest($"corporations/npccorps/", Method.GET);
+            var request = RestRequestHelper.CreateGetRequest($"corporations/npccorps/");
 
             return _client.Execute<List<Int64>>(request);
         }
